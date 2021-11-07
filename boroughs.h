@@ -19,7 +19,7 @@ struct pop_entry {
 };
 
 void read_csv();
-void read_data();
+struct pop_entry * read_data();
 void add_data();
 void update_data();
 

@@ -61,7 +61,7 @@ void read_csv() {
   }
 }
 
-void read_data() {
+struct pop_entry * read_data() {
   printf("reading data\n");
   int fp = open("boroughs.data", O_RDONLY, 0644);
 
@@ -100,4 +100,13 @@ void add_data() {
 
 void update_data() {
   printf("updating data\n");
+  struct pop_entry * data = read_data();
+  char data[256];
+
+  int edited_entry_num;
+  printf("enter a data entry to update\n");
+  sscanf(data, "%d", edited_entry_num);
+
+  printf("enter updated data entry #%d (year borough population)\n", edited_entry_num);
+
 }
