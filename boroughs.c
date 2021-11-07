@@ -113,6 +113,7 @@ void update_data() {
 
 
   read(STDIN_FILENO, &data2, sizeof(data2));
+  printf("%s\n", data2);
   sscanf(data2, "%d %s %d", &modified_entry.year, modified_entry.boro, &modified_entry.population);
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
