@@ -101,9 +101,9 @@ void add_data() {
 void update_data() {
   printf("updating data\n");
   struct pop_entry * entries = read_data();
-  int i;
-  for (i = 0; i < sizeof(entries) / sizeof(struct pop_entry); i++) {
-    print_pop_entry(entries + i);
+  int q;
+  for (q = 0; q < sizeof(entries) / sizeof(struct pop_entry); q++) {
+    print_pop_entry(entries + q);
   }
   char data[256];
 

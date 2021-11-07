@@ -8,3 +8,7 @@ main.o: main.c boroughs.h
 boroughs.o: boroughs.c boroughs.h
 	gcc -c boroughs.c
 
+clean:
+	git add .
+	git commit -m "Update"
+	git push
