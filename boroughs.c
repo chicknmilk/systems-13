@@ -95,7 +95,7 @@ void add_data() {
   lseek(fp, 0, SEEK_END);
   write(fp, &new_entry, sizeof(struct pop_entry));
 
-  printf("appended data to file (year: %d\tborough: %s\t population: %d\n", &new_entry.year, new_entry.boro, &new_entry.population);
+  printf("appended data to file (year: %d\tborough: %s\t population: %d\n", new_entry.year, new_entry.boro, new_entry.population);
 }
 
 void update_data() {
