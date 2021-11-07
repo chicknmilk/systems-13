@@ -58,10 +58,7 @@ void read_csv() {
     // advance pointer to next line
     current_pos = strchr(current_pos, '\n') + 1;
     
-    printf("segfault before while loop ends\n");
   }
-
-  printf("segfault after while loop ends\n");
 }
 
 void read_data() {
@@ -76,7 +73,7 @@ void read_data() {
   read(fp, pop_arr, f_info.st_size);
 
   int i;
-  for (i = 0; i < f_info.st_size / sizeof(struct pop_entry); i++) {
+  for (i = 0; i < f_info.st_size / sizeof(struct pop_entry) - 1; i++) {
     print_pop_entry(pop_arr + i);
   }
 }
