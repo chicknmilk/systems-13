@@ -91,7 +91,7 @@ void add_data() {
   read(STDIN_FILENO, &data, sizeof(data));
   sscanf(data, "%d %s %d", &year, borough, &population);
   printf("%d, %d, %s\n", year, population, borough);
-  new_entry = create_pop_entry(year, population, borough);
+  new_entry = create_pop_entry(&year, population, &borough);
 
   int fp = open("boroughs.data", O_WRONLY | O_APPEND | O_CREAT, 0644);
   lseek(fp, 0, SEEK_END);
