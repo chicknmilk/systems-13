@@ -58,9 +58,6 @@ void read_csv() {
     // advance pointer to next line
     current_pos = strchr(current_pos, '\n') + 1;
     
-    if (!(strchr(current_pos, '\n') < file_data + f_info.st_size)) {
-      break;
-    }
     printf("segfault before while loop ends\n");
   }
 
