@@ -100,7 +100,7 @@ void add_data() {
 
 void update_data() {
   printf("updating data\n");
-  struct pop_entry * data = read_data();
+  struct pop_entry * entries = read_data();
   char data[256];
 
   int edited_entry_num;
