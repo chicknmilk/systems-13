@@ -107,6 +107,7 @@ void update_data() {
   fgets(data, sizeof(data), stdin);
   printf("%d\n", atoi(data));
   struct pop_entry modified_entry = entries[atoi(data) - 1];
+  print_pop_entry(&modified_entry);
 
   printf("enter updated data entry #%d (year borough population)\n", atoi(data));
 
