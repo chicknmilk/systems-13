@@ -110,7 +110,7 @@ void update_data() {
   printf("enter a data entry to update\n");
   fgets(data, sizeof(data), stdin);
   printf("%d\n", atoi(data));
-  struct pop_entry modified_entry = entries[atoi(data) - 1];
+  struct pop_entry * modified_entry = entries + atoi(data) - 1;
   print_pop_entry(&modified_entry);
 
   printf("enter updated data entry #%d (year borough population)\n", atoi(data));
@@ -120,7 +120,7 @@ void update_data() {
 
   read(STDIN_FILENO, data2, sizeof(data2));
   printf("%s\n", data2);
-  sscanf(data2, "%d %s %d", &modified_entry.year, modified_entry.boro, &modified_entry.population);
+  sscanf(data2, "%d %s %d", modified_entry -> year, modified_entry -> boro, modified_entry -> population);
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
   // write entries to file
