@@ -103,12 +103,10 @@ void update_data() {
   struct pop_entry * entries = read_data();
   char data[256];
 
-  int edited_entry_num;
   printf("enter a data entry to update\n");
-  read(STDIN_FILENO, &data, sizeof(data));
-  printf("%d", &edited_entry_num);
-  sscanf(data, "%d", edited_entry_num);
+  fgets(data, sizeof(data), stdin);
+  sscanf(data, "%d", data);
 
-  printf("enter updated data entry #%d (year borough population)\n", edited_entry_num);
+  printf("enter updated data entry #%d (year borough population)\n", data);
 
 }
