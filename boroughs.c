@@ -73,7 +73,7 @@ void read_data() {
   read(fp, pop_arr, f_info.st_size);
 
   int i;
-  for (i = 0; i < f_info.st_size / sizeof(struct pop_entry) + 100; i++) {
+  for (i = 0; i < f_info.st_size / sizeof(struct pop_entry) - 5; i++) {
     print_pop_entry(pop_arr + i);
   }
 }
