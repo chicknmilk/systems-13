@@ -101,6 +101,10 @@ void add_data() {
 void update_data() {
   printf("updating data\n");
   struct pop_entry * entries = read_data();
+  int i;
+  for (i = 0; i < sizeof(entries) / sizeof(struct pop_entry); i++) {
+    print_pop_entry(entries + i);
+  }
   char data[256];
 
   printf("enter a data entry to update\n");
