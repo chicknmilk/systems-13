@@ -12,4 +12,16 @@
 #include <sys/stat.h>
 #include <dirent.h>
 
+struct pop_entry {
+  int year;
+  int population;
+  char boro[15];
+};
+
+void read_csv();
+void read_data();
+void add_data();
+void update_data();
+
+
 #endif
