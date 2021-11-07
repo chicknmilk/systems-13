@@ -109,7 +109,7 @@ void update_data() {
 
   printf("enter updated data entry #%d (year borough population)\n", atoi(data));
 
-  char data2[256] = "";
+  char data2[256];
 
 
   read(STDIN_FILENO, data2, sizeof(data2));
