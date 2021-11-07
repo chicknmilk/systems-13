@@ -13,6 +13,7 @@ int main(int argc, char *argv[]) {
 
   if (strcmp(command, "-read_csv") == 0) {
     read_csv();
+    printf("segfault after entire thing???\n");
   } 
   else if (strcmp(command, "-read_data") == 0) {
     read_data();
