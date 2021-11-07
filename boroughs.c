@@ -57,6 +57,7 @@ void read_csv() {
 
     // advance pointer to next line
     current_pos = strchr(current_pos, '\n') + 1;
+    printf("advancing\n");
   }
 }
 
