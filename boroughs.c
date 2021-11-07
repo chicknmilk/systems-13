@@ -108,8 +108,10 @@ void update_data() {
 
   printf("enter updated data entry #%d (year borough population)\n", atoi(data));
 
-  read(STDIN_FILENO, &data, sizeof(data));
-  sscanf(data, "%d %s %d", &entries[atoi(data) - 1].year, entries[atoi(data) - 1].boro, &entries[atoi(data) - 1].population);
+  char data2[256];
+
+  read(STDIN_FILENO, &data2, sizeof(data2));
+  sscanf(data2, "%d %s %d", &entries[atoi(data) - 1].year, entries[atoi(data) - 1].boro, &entries[atoi(data) - 1].population);
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
   // write entries to file
