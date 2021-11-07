@@ -43,7 +43,7 @@ void read_csv() {
   current_pos = strchr(current_pos, '\n') + 1;
 
   // read until end of file
-  while (strchr(current_pos, '\n') < file_data + f_info.st_size) {
+  while (current_pos + 1 < file_data + f_info.st_size) {
     int data[6];
 
     sscanf(current_pos, "%u,%u,%u,%u,%u,%u", data, data + 1, data + 2, data + 3, data + 4, data + 5);
