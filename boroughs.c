@@ -80,7 +80,7 @@ void read_data() {
 
 void add_data() {
   printf("adding data\n");
-  struct pop_entry * new_entry;
+  struct pop_entry new_entry;
   int year, population;
   char borough[15];
 
@@ -89,15 +89,13 @@ void add_data() {
   printf("enter new data entry (year borough population)\n");
 
   read(STDIN_FILENO, &data, sizeof(data));
-  sscanf(data, "%d %s %d", &year, borough, &population);
-  printf("%d, %d, %s\n", year, population, borough);
-  new_entry = create_pop_entry(year, population, borough);
+  sscanf(data, "%d %s %d", &new_entry.year, new_entry.boro, &new_entry.population);
 
   int fp = open("boroughs.data", O_WRONLY | O_APPEND | O_CREAT, 0644);
   lseek(fp, 0, SEEK_END);
   write(fp, &new_entry, sizeof(struct pop_entry));
 
-  printf("appended data to file (year: %d\tborough: %s\t population: %d\n", year, borough, population);
+  printf("appended data to file (year: %d\tborough: %s\t population: %d\n", &new_entry.year, new_entry.boro, &new_entry.population);
 }
 
 void update_data() {
