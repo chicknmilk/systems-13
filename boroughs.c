@@ -112,7 +112,7 @@ void update_data() {
   char data2[256] = "";
 
 
-  read(STDIN_FILENO, &data2, sizeof(data2));
+  read(STDIN_FILENO, data2, sizeof(data2));
   printf("%s\n", data2);
   sscanf(data2, "%d %s %d", &modified_entry.year, modified_entry.boro, &modified_entry.population);
 
