@@ -105,8 +105,8 @@ void update_data() {
 
   printf("enter a data entry to update\n");
   fgets(data, sizeof(data), stdin);
-  sscanf(data, "%d", data);
+  sscanf(data, "%d", atoi(data));
 
-  printf("enter updated data entry #%d (year borough population)\n", data);
+  printf("enter updated data entry #%d (year borough population)\n", atoi(data));
 
 }
