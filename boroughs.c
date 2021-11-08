@@ -128,7 +128,7 @@ void update_data() {
   // (entries + atoi(data) - 1)->year = new_entry.year;
   // strcpy((entries + atoi(data) - 1)->boro, new_entry.boro);
   // (entries + atoi(data) - 1)->population = new_entry.population;
-  *(entries + atoi(data) - 1) = new_entry;
+  entries[atoi(data) - 1] = new_entry;
 
   print_pop_entry(entries + atoi(data) - 1);
 
