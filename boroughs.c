@@ -59,6 +59,9 @@ void read_csv() {
     current_pos = strchr(current_pos, '\n') + 1;
     
   }
+
+  close(fp);
+  close(f_out);
 }
 
 struct pop_entry * read_data() {
@@ -77,6 +80,7 @@ struct pop_entry * read_data() {
     print_pop_entry(pop_arr + i);
   }
 
+  close(fp);
   return pop_arr;
 }
 
@@ -98,6 +102,8 @@ void add_data() {
   write(fp, &new_entry, sizeof(struct pop_entry));
 
   printf("appended data to file (year: %d\tborough: %s\t population: %d\n", new_entry.year, new_entry.boro, new_entry.population);
+  
+  close(fp);
 }
 
 void update_data() {
@@ -139,4 +145,6 @@ void update_data() {
   //   write(f_out, entries + i, sizeof(struct pop_entry));
   // }
   write(f_out, 1, sizeof(int));
+
+  close(f_out);
 }
