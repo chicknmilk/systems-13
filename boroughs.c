@@ -122,6 +122,9 @@ void update_data() {
   sscanf(data2, "%d %s %d", &new_entry.year, new_entry.boro, &new_entry.population);
   printf("after scanf\n");
 
+  print_pop_entry(&new_entry);
+  print_pop_entry(modified_entry);
+
   modified_entry->year = new_entry.year;
   strcpy(modified_entry->boro, new_entry.boro);
   modified_entry->population = new_entry.population;
