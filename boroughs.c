@@ -109,8 +109,6 @@ void update_data() {
   printf("enter a data entry to update\n");
   fgets(data, sizeof(data), stdin);
 
-  struct pop_entry * modified_entry = entries + atoi(data) - 1;
-
   struct pop_entry new_entry;
   int year, population;
   char borough[15];
@@ -127,9 +125,9 @@ void update_data() {
   print_pop_entry(&new_entry);
   print_pop_entry(entries + atoi(data) - 1);
 
-  modified_entry->year = new_entry.year;
-  strcpy(modified_entry->boro, new_entry.boro);
-  modified_entry->population = new_entry.population;
+  (entries + atoi(data) - 1)->year = new_entry.year;
+  strcpy((entries + atoi(data) - 1)->boro, new_entry.boro);
+  (entries + atoi(data) - 1)->population = new_entry.population;
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
   // write entries to file
