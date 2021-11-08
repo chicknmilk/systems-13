@@ -139,8 +139,15 @@ void update_data() {
   lseek(f_out, 0, SEEK_SET);
 
   // write entries to file
+
+  int fp = open("boroughs.data", O_RDONLY, 0644);
+
+  struct stat f_info;
+  stat("boroughs.data", &f_info);
+
+
   int i;
-  for (i = 0; i < sizeof(entries) / sizeof(struct pop_entry); i++) {
+  for (i = 0; i < f_info.st_size / sizeof(struct pop_entry); i++) {
     printf("writing: ");
     print_pop_entry(entries + i);
     write(f_out, entries + i, sizeof(struct pop_entry));
