@@ -52,13 +52,14 @@ void read_csv() {
     for (i = 1; i < 6; i++) {
       struct pop_entry *new_entry = create_pop_entry(data[0], data[i], boroughs[i - 1]);
       write(f_out, new_entry, sizeof(struct pop_entry));
-      print_pop_entry(new_entry);
     }
 
     // advance pointer to next line
     current_pos = strchr(current_pos, '\n') + 1;
     
   }
+
+  printf("Wrote %d bytes to boroughs.data", f_info.st_size);
 
   close(fp);
   close(f_out);
@@ -131,16 +132,9 @@ void update_data() {
   printf("enter updated data entry (year borough population)\n");
 
   read(STDIN_FILENO, &data2, sizeof(data2));
-  printf("after read\n");
   sscanf(data2, "%d %s %d", &new_entry.year, new_entry.boro, &new_entry.population);
-  printf("after scanf\n");
-
-  print_pop_entry(&new_entry);
-  print_pop_entry(entries + atoi(data) - 1);
 
   entries[atoi(data) - 1] = new_entry;
-
-  print_pop_entry(entries + atoi(data) - 1);
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
   lseek(f_out, 0, SEEK_SET);
@@ -153,8 +147,6 @@ void update_data() {
 
   int i;
   for (i = 0; i < f_info2.st_size / sizeof(struct pop_entry); i++) {
-    printf("writing: ");
-    print_pop_entry(entries + i);
     write(f_out, entries + i, sizeof(struct pop_entry));
   }
 

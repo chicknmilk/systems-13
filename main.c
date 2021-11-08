@@ -12,6 +12,7 @@ int main(int argc, char *argv[]) {
   }
 
   if (strcmp(command, "-read_csv") == 0) {
+    printf("reading data.csv\n");
     read_csv();
   } 
   else if (strcmp(command, "-read_data") == 0) {
