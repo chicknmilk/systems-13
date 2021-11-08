@@ -13,9 +13,11 @@ void print_pop_entry (struct pop_entry *entry) {
 }
 
 void read_csv() {
+  printf("reading data.csv\n");
+  
   // open file for reading
   int fp = open("data.csv", O_RDONLY, 0644);
-  int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
+  int f_out = open("boroughs.data", O_CREAT | O_WRONLY | O_TRUNC, 0644);
 
   struct stat f_info;
   stat("data.csv", &f_info);
@@ -42,6 +44,8 @@ void read_csv() {
   // advance pointer to second line
   current_pos = strchr(current_pos, '\n') + 1;
 
+  int num_entries = 0;
+
   // read until end of file
   while (current_pos + 1 < file_data + f_info.st_size) {
     int data[6];
@@ -51,6 +55,7 @@ void read_csv() {
     int i;
     for (i = 1; i < 6; i++) {
       struct pop_entry *new_entry = create_pop_entry(data[0], data[i], boroughs[i - 1]);
+      num_entries++;
       write(f_out, new_entry, sizeof(struct pop_entry));
     }
 
@@ -59,7 +64,7 @@ void read_csv() {
     
   }
 
-  printf("Wrote %ld bytes to boroughs.data\n", f_info.st_size);
+  printf("Wrote %ld bytes to boroughs.data\n", num_entries * sizeof(struct pop_entry));
 
   close(fp);
   close(f_out);
