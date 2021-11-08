@@ -122,8 +122,6 @@ void update_data() {
   sscanf(data2, "%d %s %d", &new_entry.year, new_entry.boro, &new_entry.population);
   printf("after scanf\n");
 
-  struct pop_entry * new_entry = create_pop_entry(new_entry.year, new_entry.population, new_entry.boro);
-
   entries[atoi(data) - 1] = new_entry;
   printf("after update\n");
 
