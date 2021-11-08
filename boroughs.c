@@ -130,6 +130,8 @@ void update_data() {
   // (entries + atoi(data) - 1)->population = new_entry.population;
   *(entries + atoi(data) - 1) = new_entry;
 
+  print_pop_entry(entries + atoi(data) - 1);
+
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
   // write entries to file
   int i;
