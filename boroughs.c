@@ -147,12 +147,12 @@ void update_data() {
 
   // write entries to file
 
-  struct stat f_info;
-  stat("boroughs.data", &f_info);
+  struct stat f_info2;
+  stat("boroughs.data", &f_info2);
 
 
   int i;
-  for (i = 0; i < f_info.st_size / sizeof(struct pop_entry); i++) {
+  for (i = 0; i < f_info2.st_size / sizeof(struct pop_entry); i++) {
     printf("writing: ");
     print_pop_entry(entries + i);
     write(f_out, entries + i, sizeof(struct pop_entry));
