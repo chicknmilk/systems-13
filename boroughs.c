@@ -144,7 +144,7 @@ void update_data() {
   // }
 
   int qwfp = 1;
-  write(f_out, qwfp, sizeof(int));
+  write(f_out, &qwfp, sizeof(int));
 
   close(f_out);
 }
