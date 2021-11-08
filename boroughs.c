@@ -59,7 +59,7 @@ void read_csv() {
     
   }
 
-  printf("Wrote %d bytes to boroughs.data", f_info.st_size);
+  printf("Wrote %ld bytes to boroughs.data", f_info.st_size);
 
   close(fp);
   close(f_out);
