@@ -123,7 +123,7 @@ void update_data() {
   printf("after scanf\n");
 
   print_pop_entry(&new_entry);
-  print_pop_entry(modified_entry);
+  print_pop_entry(entries + atoi(data) - 1);
 
   modified_entry->year = new_entry.year;
   strcpy(modified_entry->boro, new_entry.boro);
