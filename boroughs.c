@@ -134,9 +134,9 @@ void update_data() {
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
   // write entries to file
-  int i;
-  for (i = 0; i < sizeof(entries) / sizeof(struct pop_entry); i++) {
-    write(f_out, entries + i, sizeof(struct pop_entry));
-  }
-
+  // int i;
+  // for (i = 0; i < sizeof(entries) / sizeof(struct pop_entry); i++) {
+  //   write(f_out, entries + i, sizeof(struct pop_entry));
+  // }
+  write(f_out, 1, sizeof(int));
 }
