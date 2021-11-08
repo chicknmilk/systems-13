@@ -113,12 +113,12 @@ void update_data() {
   int year, population;
   char borough[15];
 
-  char data[256];
+  char data2[256];
 
   printf("enter updated data entry (year borough population)\n");
 
-  read(STDIN_FILENO, &data, sizeof(data));
-  sscanf(data, "%d %s %d", &new_entry.year, new_entry.boro, &new_entry.population);
+  read(STDIN_FILENO, &data2, sizeof(data2));
+  sscanf(data2, "%d %s %d", &new_entry.year, new_entry.boro, &new_entry.population);
 
   modified_entry->year = new_entry.year;
   strcpy(modified_entry->boro, new_entry.boro);
