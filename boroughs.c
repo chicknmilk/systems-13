@@ -118,11 +118,14 @@ void update_data() {
   printf("enter updated data entry (year borough population)\n");
 
   read(STDIN_FILENO, &data2, sizeof(data2));
+  printf("after read\n");
   sscanf(data2, "%d %s %d", &new_entry.year, new_entry.boro, &new_entry.population);
+  printf("after scanf\n");
 
   modified_entry->year = new_entry.year;
   strcpy(modified_entry->boro, new_entry.boro);
   modified_entry->population = new_entry.population;
+  printf("after update\n");
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
   // write entries to file
