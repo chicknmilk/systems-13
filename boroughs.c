@@ -107,7 +107,7 @@ void update_data() {
   printf("enter a data entry to update\n");
   fgets(data, sizeof(data), stdin);
 
-  struct pop_entry * modified_entry = entries + atoi(data) - 1;
+  struct pop_entry modified_entry = entries[atoi(data) - 1];
 
   struct pop_entry new_entry;
   int year, population;
@@ -122,9 +122,9 @@ void update_data() {
   sscanf(data2, "%d %s %d", &new_entry.year, new_entry.boro, &new_entry.population);
   printf("after scanf\n");
 
-  modified_entry->year = new_entry.year;
-  strcpy(modified_entry->boro, new_entry.boro);
-  modified_entry->population = new_entry.population;
+  struct pop_entry * new_entry = create_pop_entry(new_entry.year, new_entry.population, new_entry.boro);
+
+  entries[atoi(data) - 1] = new_entry;
   printf("after update\n");
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
