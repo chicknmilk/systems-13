@@ -125,9 +125,10 @@ void update_data() {
   print_pop_entry(&new_entry);
   print_pop_entry(entries + atoi(data) - 1);
 
-  (entries + atoi(data) - 1)->year = new_entry.year;
-  strcpy((entries + atoi(data) - 1)->boro, new_entry.boro);
-  (entries + atoi(data) - 1)->population = new_entry.population;
+  // (entries + atoi(data) - 1)->year = new_entry.year;
+  // strcpy((entries + atoi(data) - 1)->boro, new_entry.boro);
+  // (entries + atoi(data) - 1)->population = new_entry.population;
+  *(entries + atoi(data) - 1) = new_entry;
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
   // write entries to file
