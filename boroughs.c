@@ -139,6 +139,7 @@ void update_data() {
   print_pop_entry(entries + atoi(data) - 1);
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
+  lseek(f_out, 0, SEEK_SET);
   // write entries to file
   // int i;
   // for (i = 0; i < sizeof(entries) / sizeof(struct pop_entry); i++) {
