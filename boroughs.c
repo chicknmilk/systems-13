@@ -109,17 +109,17 @@ void update_data() {
 
   struct pop_entry * modified_entry = entries + atoi(data) - 1;
 
-  printf("enter updated data entry #%d (year borough population)\n", atoi(data));
+  // printf("enter updated data entry #%d (year borough population)\n", atoi(data));
 
-  char data2[256];
+  // char data2[256];
 
 
-  read(STDIN_FILENO, data2, sizeof(data2));
-  printf("%s\n", data2);
-  int new_year, new_population;
-  char new_boro[15];
-  sscanf(data2, "%d %s %d", &new_year, new_boro, &new_population);
-  printf("updaet stuff good\n");
+  // read(STDIN_FILENO, data2, sizeof(data2));
+  // printf("%s\n", data2);
+  // int new_year, new_population;
+  // char new_boro[15];
+  // sscanf(data2, "%d %s %d", &new_year, new_boro, &new_population);
+  // printf("updaet stuff good\n");
 
   int f_out = open("boroughs.data", O_WRONLY | O_CREAT, 0644);
   // write entries to file
