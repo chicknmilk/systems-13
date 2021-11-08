@@ -131,9 +131,6 @@ void update_data() {
   print_pop_entry(&new_entry);
   print_pop_entry(entries + atoi(data) - 1);
 
-  // (entries + atoi(data) - 1)->year = new_entry.year;
-  // strcpy((entries + atoi(data) - 1)->boro, new_entry.boro);
-  // (entries + atoi(data) - 1)->population = new_entry.population;
   entries[atoi(data) - 1] = new_entry;
 
   print_pop_entry(entries + atoi(data) - 1);
@@ -145,7 +142,9 @@ void update_data() {
   // for (i = 0; i < sizeof(entries) / sizeof(struct pop_entry); i++) {
   //   write(f_out, entries + i, sizeof(struct pop_entry));
   // }
-  write(f_out, 1, sizeof(int));
+
+  int qwfp = 1;
+  write(f_out, qwfp, sizeof(int));
 
   close(f_out);
 }
