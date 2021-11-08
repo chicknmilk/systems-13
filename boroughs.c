@@ -139,12 +139,12 @@ void update_data() {
   lseek(f_out, 0, SEEK_SET);
   // write entries to file
   int i;
-  for (i = 0; i < sizeof(entries) / sizeof(struct pop_entry); i++) {
-    write(f_out, entries + i, sizeof(struct pop_entry));
-  }
+  // for (i = 0; i < sizeof(entries) / sizeof(struct pop_entry); i++) {
+  //   write(f_out, entries + i, sizeof(struct pop_entry));
+  // }
 
-  // int qwfp = 1;
-  // write(f_out, &qwfp, sizeof(int));
+  int qwfp = 1;
+  write(f_out, &qwfp, sizeof(int));
 
   close(f_out);
 }
