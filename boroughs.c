@@ -9,7 +9,7 @@ struct pop_entry * create_pop_entry(int year, int population, char boro[15]) {
 }
 
 void print_pop_entry (struct pop_entry *entry) {
-    printf("%d, %d, %s\n", entry->year, entry->population, entry->boro);
+    printf("year: %d\tboro: %d\tpop: %s\n", entry->year, entry->population, entry->boro);
 }
 
 void read_csv() {
@@ -77,7 +77,7 @@ void read_data() {
 
   int i;
   for (i = 0; i < f_info.st_size / sizeof(struct pop_entry); i++) {
-    printf("[%d] ", i);
+    printf("[%d] ", i + 1);
     print_pop_entry(pop_arr + i);
   }
 
