@@ -64,7 +64,7 @@ void read_csv() {
   close(f_out);
 }
 
-struct pop_entry * read_data() {
+void read_data() {
   printf("reading data\n");
   int fp = open("boroughs.data", O_RDONLY, 0644);
 
@@ -77,11 +77,11 @@ struct pop_entry * read_data() {
 
   int i;
   for (i = 0; i < f_info.st_size / sizeof(struct pop_entry); i++) {
+    printf("[%d] ", i);
     print_pop_entry(pop_arr + i);
   }
 
   close(fp);
-  return pop_arr;
 }
 
 void add_data() {
@@ -108,7 +108,14 @@ void add_data() {
 
 void update_data() {
   printf("updating data\n");
-  struct pop_entry * entries = read_data();
+  int fp = open("boroughs.data", O_RDONLY, 0644);
+
+  struct stat f_info;
+  stat("boroughs.data", &f_info);
+
+  struct pop_entry * entries = malloc(f_info.st_size);
+
+  read(fp, entries, f_info.st_size);
 
   char data[256];
 
@@ -139,8 +146,6 @@ void update_data() {
   lseek(f_out, 0, SEEK_SET);
 
   // write entries to file
-
-  int fp = open("boroughs.data", O_RDONLY, 0644);
 
   struct stat f_info;
   stat("boroughs.data", &f_info);
