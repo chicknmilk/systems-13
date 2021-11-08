@@ -76,6 +76,8 @@ struct pop_entry * read_data() {
   for (i = 0; i < f_info.st_size / sizeof(struct pop_entry); i++) {
     print_pop_entry(pop_arr + i);
   }
+
+  return pop_arr;
 }
 
 void add_data() {
