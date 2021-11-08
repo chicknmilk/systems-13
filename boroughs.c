@@ -9,7 +9,7 @@ struct pop_entry * create_pop_entry(int year, int population, char boro[15]) {
 }
 
 void print_pop_entry (struct pop_entry *entry) {
-    printf("year: %d\tboro: %d\tpop: %s\n", entry->year, entry->population, entry->boro);
+    printf("year: %d    boro: %d    pop: %s\n", entry->year, entry->boro, entry->population);
 }
 
 void read_csv() {
@@ -59,13 +59,13 @@ void read_csv() {
     
   }
 
-  printf("Wrote %ld bytes to boroughs.data", f_info.st_size);
+  printf("Wrote %ld bytes to boroughs.data\n", f_info.st_size);
 
   close(fp);
   close(f_out);
 }
 
-void read_data() {
+struct pop_entry * read_data() {
   printf("reading data\n");
   int fp = open("boroughs.data", O_RDONLY, 0644);
 
@@ -83,6 +83,7 @@ void read_data() {
   }
 
   close(fp);
+  return pop_arr;
 }
 
 void add_data() {
@@ -109,14 +110,7 @@ void add_data() {
 
 void update_data() {
   printf("updating data\n");
-  int fp = open("boroughs.data", O_RDONLY, 0644);
-
-  struct stat f_info;
-  stat("boroughs.data", &f_info);
-
-  struct pop_entry * entries = malloc(f_info.st_size);
-
-  read(fp, entries, f_info.st_size);
+  struct pop_entry * entries = read_data();
 
   char data[256];
 
